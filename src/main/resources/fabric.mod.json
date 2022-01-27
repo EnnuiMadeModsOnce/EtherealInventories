@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "etherealinventories",
+  "version": "${version}",
+  "name": "Ethereal Inventories",
+  "description": "Adds etherinvs (a.k.a. ethereal inventories), which saves your items when you die",
+  "authors": ["EnnuiL"],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/",
+    "issues": "https://github.com/EnnuiL/EtherealInventories/issues",
+    "sources": "https://github.com/EnnuiL/EtherealInventories"
+  },
+  "license": "MIT",
+  "icon": "assets/etherealinventories/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["io.github.ennuil.etherealinventories.EtherealInventoriesMod"],
+    "cardinal-components": ["io.github.ennuil.etherealinventories.components.EtherealInventoriesComponents"]
+  },
+  "mixins": [
+    "etherealinventories.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.0",
+    "fabric": ">=0.37.0"
+  },
+  "custom": {
+    "cardinal-components": [
+      "etherealinventories:etherinv",
+      "etherealinventories:etherinv_storage",
+      "etherealinventories:soulbound"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "entity.etherealinventories.etherinv": "Etherinv",
+    "item.etherealinventories.ethereal_compass": "Ethereal Compass",
+    "item.etherealinventories.ethereal_compass.tooltip": "Right click while holding an iron ingot to magnetize",
+    "item.etherealinventories.magnetized_ethereal_compass": "Magnetized Ethereal Compass",
+    "item.etherealinventories.cracked_magnetized_ethereal_compass": "Cracked Magnetized Ethereal Compass",
+    "item.etherealinventories.shattering_magnetized_ethereal_compass": "Shattering Magnetized Ethereal Compass",
+    "container.etherinv": "Ethereal Inventory",
+    "container.etherinv.not_owner": "This etherinv belongs to someone else!",
+    "chat.etherinv.soulbound.acquired": "Your inventory has been soulbound!",
+    "chat.etherinv.soulbound.respawn": "Your body might have died, but what doesn't kill your inventory only makes it stronger."
+}

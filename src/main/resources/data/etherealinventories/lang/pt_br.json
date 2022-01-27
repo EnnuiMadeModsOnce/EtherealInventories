@@ -1,0 +1,12 @@
+{
+    "entity.etherealinventories.etherinv": "Invetéreo",
+    "item.etherealinventories.ethereal_compass": "Bússola etérea",
+    "item.etherealinventories.ethereal_compass.tooltip": "Clique com o botão direito enquanto segura uma barra de ferro para magnetizar",
+    "item.etherealinventories.magnetized_ethereal_compass": "Bússola etérea magnetizada",
+    "item.etherealinventories.cracked_magnetized_ethereal_compass": "Bússola etérea magnetizada rachada",
+    "item.etherealinventories.shattering_magnetized_ethereal_compass": "Bússola etérea magnetizada despedaçada",
+    "container.etherinv": "Inventário etéreo",
+    "container.etherinv.not_owner": "Esse invetéreo pertence à uma outra pessoa!",
+    "chat.etherinv.soulbound.acquired": "Seu inventário foi ligada à sua alma!",
+    "chat.etherinv.soulbound.respawn": "O seu corpo pode até ter morrido, mas aquilo que não mata o seu inventário apenas o fortacele."
+}
