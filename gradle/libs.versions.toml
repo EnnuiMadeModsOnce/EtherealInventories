@@ -1,14 +1,12 @@
 [versions]
 minecraft = "1.18.1"
 quilt_mappings = "1.18.1+build.6" # Latest version is available at https://github.com/QuiltMC/quilt-mappings/tags
-fabric_loader = "0.12.12" # Latest version is available at https://fabricmc.net/versions.html
+fabric_loader = "0.13.2" # Latest version is available at https://fabricmc.net/versions.html
 
-fabric_api = "0.46.1+1.18"
-polymer = "0.2.0-beta.20+1.18.1"
+fabric_api = "0.46.4+1.18"
+polymer = "0.2.0-beta.25+1.18.1"
 sgui = "1.0.0-rc6+1.18-pre5"
-cardinal_components = "4.0.1"
-# Sorry, but you were a massive pain
-# cardinal_components = "4.1.0"
+cardinal_components = "4.1.2"
 server_translations = "1.4.8+1.18-pre1"
 # nbt_crafting = "2.1.0+mc1.18-pre1"
 
@@ -20,12 +18,9 @@ fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_l
 fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
 polymer = { module = "eu.pb4:polymer", version.ref = "polymer" }
 sgui = { module = "eu.pb4:sgui", version.ref = "sgui" }
-cardinal_components_base = { module = "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base", version.ref = "cardinal_components" }
-cardinal_components_entity = { module = "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity", version.ref = "cardinal_components" }
-cardinal_components_level = { module = "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-level", version.ref = "cardinal_components" }
-# cardinal_components_base = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-base", version.ref = "cardinal_components" }
-# cardinal_components_entity = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-entity", version.ref = "cardinal_components" }
-# cardinal_components_level = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-level", version.ref = "cardinal_components" }
+cardinal_components_base = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-base", version.ref = "cardinal_components" }
+cardinal_components_entity = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-entity", version.ref = "cardinal_components" }
+cardinal_components_level = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-level", version.ref = "cardinal_components" }
 server_translations = { module = "fr.catcore:server-translations-api", version.ref = "server_translations" }
 # nbt_crafting = { module = "de.siphalor:nbtcrafting-1.18", version.ref = "nbt_crafting"}
 

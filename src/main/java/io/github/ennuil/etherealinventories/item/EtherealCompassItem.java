@@ -28,6 +28,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -175,6 +176,16 @@ public class EtherealCompassItem extends Item implements PolymerItem {
         etherinv.setVelocity(pos);
         etherinv.velocityModified = true;
         etherinv.fallDistance = 0.0F;
+
+        //etherinv.playSound(SoundEvents.BLOCK_CONDUIT_ATTACK_TARGET, 1.0F, 2.0F);
+        if (stack.getDamage() + 1 != stack.getMaxDamage()) {
+            System.out.println(String.format("%s %s", stack.getDamage(), stack.getMaxDamage()));
+            float extraPitch = 1.0F - (((stack.getDamage()) / (stack.getMaxDamage() - 2.0F)));
+            System.out.println(extraPitch);
+            System.out.println(MathHelper.sin(extraPitch));
+            player.playSound(SoundEvents.BLOCK_LODESTONE_BREAK, SoundCategory.PLAYERS, 1.0F, 1.0F);
+            player.playSound(SoundEvents.ENTITY_ENDER_EYE_DEATH, SoundCategory.PLAYERS, 2.0F, 1.0F + extraPitch);
+        }
 
         stack.damage(1, player, user -> user.sendToolBreakStatus(hand));
         player.getItemCooldownManager().set(this, 10);
