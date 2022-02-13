@@ -24,7 +24,7 @@ public abstract class LivingEntityMixin {
         if ((Object) this instanceof ServerPlayerEntity player) {
             if (!EtherealInventoriesComponents.SOULBOUND.get(player).isSoulbound()) {
                 EtherealInventoriesComponents.SOULBOUND.get(player).setSoulbound(true);
-                player.sendMessage(new TranslatableText("chat.etherinv.soulbound.acquired"), false);
+                player.sendMessage(new TranslatableText("chat.etherinv.soulbound.acquired"), true);
             }
         }
     }

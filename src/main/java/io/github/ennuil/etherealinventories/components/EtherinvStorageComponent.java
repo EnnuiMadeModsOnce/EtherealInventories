@@ -39,7 +39,7 @@ public class EtherinvStorageComponent implements Component {
     public void readFromNbt(NbtCompound nbt) {
         map.clear();
         if (nbt.contains("EtherinvStorage", NbtCompound.LIST_TYPE)) {
-            NbtList nbtList = nbt.getList("Etherinvs", NbtCompound.COMPOUND_TYPE);
+            NbtList nbtList = nbt.getList("EtherinvStorage", NbtCompound.COMPOUND_TYPE);
             for (int i = 0; i < nbtList.size(); i++) {
                 NbtCompound compound = nbtList.getCompound(i);
                 if (compound.containsUuid("UUID")

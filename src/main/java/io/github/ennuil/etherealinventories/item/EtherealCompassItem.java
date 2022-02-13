@@ -72,7 +72,7 @@ public class EtherealCompassItem extends Item implements PolymerItem {
 
     public static boolean hasEtherinv(ItemStack stack) {
         NbtCompound nbtCompound = stack.getNbt();
-        return nbtCompound != null && (nbtCompound.containsUuid(ETHERINV_UUID_KEY));
+        return nbtCompound != null && nbtCompound.containsUuid(ETHERINV_UUID_KEY);
     }
 
     public static UUID getEtherinv(ItemStack stack) {
