@@ -124,7 +124,7 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
     private void tickIfSoulbound(CallbackInfo ci) {
         if (this.age % 5 == 0) {
             if (EtherealInventoriesComponents.SOULBOUND.get(this).isSoulbound()) {
-                ((ServerWorld)this.world).spawnParticles(ParticleTypes.WITCH, this.getX(), this.getY(), this.getZ(), 2, 0.0, 0.0, 0.0, 0.25);
+                ((ServerWorld)this.world).spawnParticles((ServerPlayerEntity)(Object)this, ParticleTypes.WITCH, true, this.getX(), this.getY(), this.getZ(), 2, 0.0, 0.0, 0.0, 0.25);
             }
         }
     }
