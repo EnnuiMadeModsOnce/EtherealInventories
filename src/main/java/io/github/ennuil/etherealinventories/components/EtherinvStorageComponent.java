@@ -43,13 +43,13 @@ public class EtherinvStorageComponent implements Component {
             for (int i = 0; i < nbtList.size(); i++) {
                 NbtCompound compound = nbtList.getCompound(i);
                 if (compound.containsUuid("UUID")
-                && compound.contains("BlockPos", NbtCompound.LIST_TYPE)
+                && compound.contains("BlockPos", NbtCompound.INT_ARRAY_TYPE)
                 && compound.contains("Dimension", NbtCompound.STRING_TYPE)
                 && compound.contains("IsLoaded", NbtCompound.BYTE_TYPE)) {
-                    NbtList blockPosList = compound.getList("BlockPos", NbtCompound.INT_TYPE);
-                    BlockPos blockPos = new BlockPos(blockPosList.getInt(0), MathHelper.clamp(blockPosList.getInt(1), -2.0E7, 2.0E7), blockPosList.getInt(2));
+                    int[] blockPosList = compound.getIntArray("BlockPos");
+                    BlockPos blockPos = new BlockPos(blockPosList[0], MathHelper.clamp(blockPosList[1], -2.0E7, 2.0E7), blockPosList[2]);
 
-                    Optional<RegistryKey<World>> optionalDimension = World.CODEC.parse(NbtOps.INSTANCE, compound.get("LodestoneDimension")).result();
+                    Optional<RegistryKey<World>> optionalDimension = World.CODEC.parse(NbtOps.INSTANCE, compound.get("Dimension")).result();
                     RegistryKey<World> dimension = null;
                     if (optionalDimension.isPresent()) {
                         dimension = optionalDimension.get();
