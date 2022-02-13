@@ -183,8 +183,8 @@ public class EtherealCompassItem extends Item implements PolymerItem {
             float extraPitch = 1.0F - (((stack.getDamage()) / (stack.getMaxDamage() - 2.0F)));
             System.out.println(extraPitch);
             System.out.println(MathHelper.sin(extraPitch));
-            player.playSound(SoundEvents.BLOCK_LODESTONE_BREAK, SoundCategory.PLAYERS, 1.0F, 1.0F);
-            player.playSound(SoundEvents.ENTITY_ENDER_EYE_DEATH, SoundCategory.PLAYERS, 2.0F, 1.0F + extraPitch);
+            player.playSound(SoundEvents.BLOCK_LODESTONE_BREAK, SoundCategory.PLAYERS, 1.0F, 2.0F);
+            player.playSound(SoundEvents.ENTITY_ENDER_EYE_DEATH, SoundCategory.PLAYERS, 1.0F, 1.0F + extraPitch);
         }
 
         stack.damage(1, player, user -> user.sendToolBreakStatus(hand));

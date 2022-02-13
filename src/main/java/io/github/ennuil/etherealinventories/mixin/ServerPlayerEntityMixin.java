@@ -20,6 +20,7 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.TranslatableText;
@@ -115,6 +116,15 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
                     stack.getNbt().putInt("DeathNumber", EtherealInventoriesComponents.ETHERINV.get(oldPlayer).getNumberOfDeaths());
                     this.giveItemStack(stack);
                 }
+            }
+        }
+    }
+
+    @Inject(at = @At("TAIL"), method = "tick")
+    private void tickIfSoulbound(CallbackInfo ci) {
+        if (this.age % 5 == 0) {
+            if (EtherealInventoriesComponents.SOULBOUND.get(this).isSoulbound()) {
+                ((ServerWorld)this.world).spawnParticles(ParticleTypes.WITCH, this.getX(), this.getY(), this.getZ(), 2, 0.0, 0.0, 0.0, 0.25);
             }
         }
     }
