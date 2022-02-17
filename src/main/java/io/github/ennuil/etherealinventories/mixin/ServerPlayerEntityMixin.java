@@ -19,6 +19,7 @@ import io.github.ennuil.etherealinventories.entity.EtherinvEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -35,22 +36,18 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
         super(world, blockPos, f, gameProfile);
     }
 
-    @Redirect(
-        at = @At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/server/network/ServerPlayerEntity;drop(Lnet/minecraft/entity/damage/DamageSource;)V"
-        ),
-        method = "onDeath"
-    )
-    protected void moveInventoryToEtherinv(ServerPlayerEntity player, DamageSource source) {
-        boolean shouldKeepInventory = this.world.getGameRules().getBoolean(GameRules.KEEP_INVENTORY) || player.isSpectator();
+    // TODO - Move this as an Inject to PlayerEntity's dropInventory
+    @Override
+    protected void dropInventory() {
+        boolean shouldKeepInventory = this.world.getGameRules().getBoolean(GameRules.KEEP_INVENTORY) || this.isSpectator();
         if (shouldKeepInventory) {
-            this.drop(source);
+            super.dropInventory();
             return;
         }
 
         if (EtherealInventoriesComponents.SOULBOUND.get(this).isSoulbound()) {
-            player.sendMessage(new TranslatableText("chat.etherinv.soulbound.respawn"), false);
+            this.sendMessage(new TranslatableText("chat.etherinv.soulbound.respawn"), false);
+            super.dropInventory();
             return;
         }
 
@@ -91,8 +88,6 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
             
             return;
         }
-
-        this.drop(source);
     }
 
     @Inject(at = @At("TAIL"), method = "copyFrom")
@@ -114,7 +109,8 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
                     UUID etherinvUuid = EtherealInventoriesComponents.ETHERINV.get(oldPlayer).getEtherinv().get();
                     stack.getOrCreateNbt().putUuid("EtherinvUUID", etherinvUuid);
                     stack.getNbt().putInt("DeathNumber", EtherealInventoriesComponents.ETHERINV.get(oldPlayer).getNumberOfDeaths());
-                    this.giveItemStack(stack);
+                    //this.giveItemStack(stack);
+                    this.getInventory().insertStack(PlayerInventory.OFF_HAND_SLOT, stack);
                 }
             }
         }
