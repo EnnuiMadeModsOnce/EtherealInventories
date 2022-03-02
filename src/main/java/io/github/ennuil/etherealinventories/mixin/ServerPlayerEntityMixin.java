@@ -59,6 +59,9 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
             if (EtherealInventoriesComponents.SOULBOUND.get(this).isSoulbound()) {
                 ((ServerWorld)this.world).spawnParticles((ServerPlayerEntity)(Object)this, ParticleTypes.WITCH, true, this.getX(), this.getY(), this.getZ(), 2, 0.0, 0.0, 0.0, 0.25);
             }
+            if (EtherealInventoriesComponents.ETHERINV.get(this).getEtherinv().isPresent()) {
+                ((ServerWorld)this.world).spawnParticles((ServerPlayerEntity)(Object)this, ParticleTypes.END_ROD, true, this.getX(), this.getY() + 0.125, this.getZ(), 1, 0.25, 0.125, 0.25, 0.125);
+            }
         }
     }
 }

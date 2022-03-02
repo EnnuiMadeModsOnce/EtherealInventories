@@ -326,7 +326,7 @@ public class EtherinvEntity extends Entity implements PolymerEntity {
                 serverWorld.spawnParticles(ParticleTypes.WITCH, this.getX(), this.getY() + 0.5, this.getZ(), 50, 0.0, 0.0, 0.0, 1.0);
             }
         }
-        this.discard();
+        this.kill();
     }
  
     public void poof() {
@@ -337,13 +337,17 @@ public class EtherinvEntity extends Entity implements PolymerEntity {
                 serverWorld.spawnParticles(ParticleTypes.WITCH, this.getX(), this.getBlockY() + 0.5, this.getZ(), 25, 0.0, 0.0, 0.0, 1.0);
             }
         }
-        this.discard();
+        this.kill();
     }
 
     @Override
     public void remove(RemovalReason reason) {
         if (this.world instanceof ServerWorld serverWorld) {
             if (reason.shouldDestroy()) {
+                if (!this.inventory.isEmpty()) {
+                    this.explode();
+                }
+                
                 if (this.getOwnerHeadUuid().isPresent()) {
                     Entity entity = serverWorld.getEntity(this.getOwnerHeadUuid().get());
                     if (entity != null) {
