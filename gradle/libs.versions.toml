@@ -1,13 +1,13 @@
 [versions]
-minecraft = "1.18.1"
-quilt_mappings = "1.18.1+build.6" # Latest version is available at https://github.com/QuiltMC/quilt-mappings/tags
-fabric_loader = "0.13.2" # Latest version is available at https://fabricmc.net/versions.html
+minecraft = "1.18.2"
+quilt_mappings = "1.18.2+build.2" # Latest version is available at https://github.com/QuiltMC/quilt-mappings/tags
+fabric_loader = "0.13.3" # Latest version is available at https://fabricmc.net/versions.html
 
-fabric_api = "0.46.4+1.18"
-polymer = "0.2.0-beta.25+1.18.1"
-sgui = "1.0.0-rc6+1.18-pre5"
-cardinal_components = "4.1.2"
-server_translations = "1.4.8+1.18-pre1"
+fabric_api = "0.47.8+1.18.2"
+polymer = "0.2.0-beta.28+1.18.2"
+sgui = "1.0.0+1.18.1"
+cardinal_components = "4.1.4"
+server_translations = "1.4.10+1.18.2"
 # nbt_crafting = "2.1.0+mc1.18-pre1"
 
 [libraries]

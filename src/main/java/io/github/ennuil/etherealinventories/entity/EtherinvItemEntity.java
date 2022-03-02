@@ -1,10 +1,18 @@
 package io.github.ennuil.etherealinventories.entity;
 
+import java.util.List;
+
 import eu.pb4.polymer.api.entity.PolymerEntity;
+import io.github.ennuil.etherealinventories.mixin.ItemEntityAccessor;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.DataTracker.Entry;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.item.SkullItem;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -27,6 +35,17 @@ public class EtherinvItemEntity extends ItemEntity implements PolymerEntity {
     @Override
     public EntityType<?> getPolymerEntityType() {
         return EntityType.ITEM;
+    }
+
+    @Override
+    public void modifyTrackedData(List<Entry<?>> data) {
+        ItemStack headStack = Items.PLAYER_HEAD.getDefaultStack();
+        NbtCompound headStackData = new NbtCompound();
+        NbtCompound headStackDataUuid = new NbtCompound();
+        headStackDataUuid.putUuid("Id", this.getThrower());
+        headStackData.put(SkullItem.SKULL_OWNER_KEY, headStackDataUuid);
+        headStack.setNbt(headStackData);
+        data.add(new DataTracker.Entry<>(ItemEntityAccessor.getStack(), headStack));
     }
 
     @Override

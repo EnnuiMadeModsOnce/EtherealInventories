@@ -26,6 +26,7 @@ import net.minecraft.entity.data.DataTracker.Entry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.SkullItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
@@ -100,14 +101,8 @@ public class EtherinvEntity extends Entity implements PolymerEntity {
             
             if (this.getOwner().isPresent()) {
                 if (this.getOwnerHeadUuid().isEmpty()) {
-                    ItemStack headStack = Items.PLAYER_HEAD.getDefaultStack();
-                    NbtCompound headStackData = new NbtCompound();
-                    NbtCompound headStackDataUuid = new NbtCompound();
-                    headStackDataUuid.putUuid("Id", this.getOwner().get());
-                    headStackData.put("SkullOwner", headStackDataUuid);
-                    headStack.setNbt(headStackData);
-                    
-                    ItemEntity headEntity = new EtherinvItemEntity(serverWorld, this.getX(), this.getY() + 0.25, this.getZ(), headStack);
+                    ItemEntity headEntity = new EtherinvItemEntity(serverWorld, this.getX(), this.getY() + 0.25, this.getZ(), Items.PLAYER_HEAD.getDefaultStack());
+                    headEntity.setThrower(this.getOwner().get());
                     serverWorld.spawnEntity(headEntity);
                     this.setOwnerHeadUuid(Optional.of(headEntity.getUuid()));
                 }
